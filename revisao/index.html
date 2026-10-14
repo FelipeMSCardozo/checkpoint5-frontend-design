@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaCore</title>
+  <style>
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:#0b0910;color:#f7f3fb;font-family:Arial,Helvetica,sans-serif;font-size:14px}
+    a{color:inherit;text-decoration:none}
+    a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #c57aef;outline-offset:3px}
+    .limite{width:min(740px,calc(100% - 48px));margin:0 auto}
+    .topo{background:#3b2454;border-top:3px solid #4b2f68}
+    .menu{height:59px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .marca{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:bold;white-space:nowrap}
+    .simbolo{display:inline-block;width:23px;height:23px;border:2px solid #a951d7;border-radius:50%}
+    .links{display:flex;gap:19px;align-items:center;font-size:9px}
+    .links a:hover{color:#d7a3f3}
+    .hero{background:#3b2454;text-align:center;padding:59px 20px 74px}
+    .hero h1{font-size:clamp(30px,4.2vw,36px);line-height:1.04;margin:0 auto;max-width:510px;letter-spacing:-.6px}
+    .hero p{font-size:11px;line-height:1.55;color:#e1d8e8;max-width:430px;margin:20px auto 17px}
+    .botao{display:inline-block;border:0;border-radius:5px;background:#a451d2;color:#fff;padding:10px 17px;font-size:8px;cursor:pointer}
+    .botao:hover{background:#b96be0}
+    section{scroll-margin-top:20px}
+    .servicos{padding:62px 0 68px;text-align:center}
+    .chamada{font-size:8px;letter-spacing:2px;color:#c76df0;font-weight:bold;text-transform:uppercase}
+    h2{margin:12px 0 0;font-size:23px;line-height:1.2}
+    .introducao{max-width:510px;margin:14px auto 29px;color:#bcb3c5;font-size:11px;line-height:1.55}
+    .grade{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;text-align:left}
+    .cartao{padding:20px;background:#30243f;border-radius:12px;min-height:130px;display:flex;flex-direction:column;justify-content:center}
+    .cartao h3{font-size:10px;margin:0 0 11px;font-weight:bold}
+    .cartao p{font-size:10px;line-height:1.5;color:#c1b7cb;margin:0}
+    .sobre{background:#251c30;padding:61px 0 67px}
+    .titulo-secao{text-align:center}
+    .sobre-conteudo{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:42px;margin-top:28px}
+    .sobre h3{font-size:13px;line-height:1.25;color:#ca79ef;margin:0 0 14px}
+    .sobre p{color:#c3b8cc;font-size:10.5px;line-height:1.5;margin:0 0 14px}
+    .arte{height:198px;border-radius:14px;background:linear-gradient(115deg,#a74bd0 0%,#542d72 48%,#17101f 100%);display:flex;align-content:center;align-items:center;justify-content:center;flex-wrap:wrap;gap:17px;padding:25px;overflow:hidden}
+    .circulo{display:block;border-radius:50%;background:#dfb8f1;opacity:.31;width:43px;height:43px}
+    .circulo:nth-child(2){width:53px;height:53px;opacity:.25}
+    .circulo:nth-child(3){width:63px;height:63px;opacity:.22}
+    .circulo:nth-child(4){width:48px;height:48px;opacity:.14}
+    .circulo:nth-child(5){width:58px;height:58px;opacity:.18}
+    .circulo:nth-child(6){width:68px;height:68px;opacity:.16}
+    .clientes{padding:60px 0 45px;text-align:center}
+    .clientes .grade{margin-top:23px}
+    .depoimento{min-height:148px;padding:16px 17px;background:#30243f;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+    .avatar{width:33px;height:33px;border-radius:50%;background:#9650bb;margin-bottom:12px}
+    .depoimento p{font-size:9px;line-height:1.45;color:#e2d9e9;margin:0 0 10px}
+    .depoimento strong{font-size:9px;font-weight:normal}
+    .contato{padding:10px 0 67px;text-align:center}
+    .contato-conteudo{display:grid;grid-template-columns:1fr 1.08fr;align-items:center;gap:30px;margin-top:21px;text-align:left}
+    .arte-contato{height:222px;border-radius:14px;background:linear-gradient(145deg,#1a1025,#643481 70%,#ad53d8);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:18px;padding:20px}
+    .arte-contato .circulo{background:transparent;border:1px solid #dcb5ef;opacity:.35}
+    .formulario{background:#251c30;border:1px solid #9950c6;border-radius:15px;padding:19px 20px}
+    .formulario h3{font-size:14px;color:#d078f0;margin:0 0 8px}
+    .formulario>p{font-size:9px;line-height:1.4;color:#bdb1c7;margin:0 0 11px}
+    .campo{margin-bottom:9px}
+    label{display:block;font-size:9px;margin-bottom:5px}
+    input,textarea{display:block;width:100%;background:#110d17;border:1px solid #754092;border-radius:4px;padding:6px 8px;color:#fff;font:inherit;font-size:11px}
+    input{height:26px}
+    textarea{height:45px;resize:vertical}
+    .retorno{font-size:10px;color:#e7c5f6;margin:8px 0 0;line-height:1.4}
+    .rodape{background:#16111c;padding:45px 0 15px;text-align:center}
+    .marca-rodape{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:14px;font-weight:bold}
+    .marca-rodape .simbolo{width:26px;height:26px}
+    .colunas-rodape{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:23px;text-align:center}
+    .colunas-rodape h3{font-size:8px;letter-spacing:2px;color:#c66df0;margin:0 0 10px}
+    .colunas-rodape p,.colunas-rodape a{display:block;font-size:8px;color:#bbb1c4;line-height:1.5;margin:0 0 7px}
+    .colunas-rodape a:hover{color:#fff}
+    .direitos{border-top:1px solid #382640;padding-top:17px;margin-top:28px;font-size:8px;color:#a69aaa}
+    @media(max-width:650px){
+      .limite{width:min(100% - 32px,480px)}
+      .menu{height:auto;min-height:62px;align-items:flex-start;padding:17px 0;flex-direction:column}
+      .links{width:100%;gap:15px;flex-wrap:wrap;font-size:10px}
+      .hero{padding:53px 18px 60px}
+      .hero h1{font-size:32px}
+      .grade{grid-template-columns:1fr;gap:12px}
+      .cartao{min-height:105px}
+      .sobre-conteudo,.contato-conteudo{grid-template-columns:1fr;gap:22px}
+      .arte{height:180px}
+      .arte-contato{height:180px}
+      .clientes{padding-bottom:35px}
+      .depoimento{min-height:130px}
+      .colunas-rodape{grid-template-columns:1fr;gap:23px}
+    }
+  </style>
+</head>
+<body>
+  <header class="topo" id="inicio">
+    <div class="limite menu">
+      <a class="marca" href="#inicio"><span class="simbolo" aria-hidden="true"></span>NovaCore</a>
+      <nav class="links" aria-label="Menu principal">
+        <a href="#servicos">Soluções</a>
+        <a href="#sobre">Sobre nós</a>
+        <a href="#clientes">Clientes</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+    <section class="hero">
+      <h1>Tecnologia para acelerar<br>ideias,<br>equipes e negócios</h1>
+      <p>Soluções digitais sob medida para empresas que querem inovar com estratégia, clareza e eficiência.</p>
+      <a class="botao" href="#servicos">QUERO CONHECER</a>
+    </section>
+  </header>
+
+  <main>
+    <section class="servicos" id="servicos">
+      <div class="limite">
+        <div class="chamada">Nosso trabalho</div>
+        <h2>Serviços</h2>
+        <p class="introducao">A NovaCore combina estratégia, design e desenvolvimento para criar soluções digitais que simplificam processos e fazem negócios evoluírem.</p>
+        <div class="grade">
+          <article class="cartao"><h3>DESENVOLVIMENTO WEB</h3><p>Sites, portais e plataformas modernas com foco em performance, usabilidade e escalabilidade.</p></article>
+          <article class="cartao"><h3>APLICAÇÕES MOBILE</h3><p>Experiências mobile intuitivas para aproximar empresas e usuários em diferentes jornadas digitais.</p></article>
+          <article class="cartao"><h3>AUTOMAÇÃO DE PROCESSOS</h3><p>Fluxos mais eficientes para reduzir tarefas manuais e melhorar a produtividade das equipes.</p></article>
+          <article class="cartao"><h3>INTEGRAÇÕES DE SISTEMAS</h3><p>Conexão entre ferramentas, APIs e plataformas para centralizar operações e informações.</p></article>
+          <article class="cartao"><h3>DADOS E ANALYTICS</h3><p>Dashboards e soluções analíticas para transformar dados em decisões mais inteligentes.</p></article>
+          <article class="cartao"><h3>UX E INTERFACE</h3><p>Interfaces claras, funcionais e atrativas para melhorar a experiência dos produtos digitais.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sobre" id="sobre">
+      <div class="limite">
+        <div class="titulo-secao"><div class="chamada">NovaCore</div><h2>Sobre nós</h2></div>
+        <div class="sobre-conteudo">
+          <div>
+            <h3>ATUAÇÃO EM DIFERENTES MERCADOS E SOLUÇÕES DIGITAIS</h3>
+            <p>Somos uma empresa de tecnologia focada em desenvolver soluções digitais para negócios que buscam inovação com consistência. Atuamos lado a lado com nossos clientes na criação de produtos, melhoria de processos e evolução tecnológica.</p>
+            <p>Nossa trajetória é marcada pela colaboração entre estratégia, design e desenvolvimento. Com uma equipe multidisciplinar, entregamos soluções personalizadas para diferentes segmentos e desafios.</p>
+          </div>
+          <div class="arte" aria-hidden="true"><span class="circulo"></span><span class="circulo"></span><span class="circulo"></span><span class="circulo"></span><span class="circulo"></span><span class="circulo"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="clientes" id="clientes">
+      <div class="limite">
+        <div class="chamada">Nossos clientes</div>
+        <h2>Depoimentos</h2>
+        <div class="grade">
+          <article class="depoimento"><span class="avatar" aria-hidden="true"></span><p>“A parceria trouxe mais clareza para nossos processos e acelerou a entrega de um produto que estava parado há meses.”</p><strong>Ana Beatriz Silva</strong></article>
+          <article class="depoimento"><span class="avatar" aria-hidden="true"></span><p>“O time entendeu nosso negócio rapidamente e transformou necessidades complexas em uma experiência simples para o usuário.”</p><strong>Carlos Eduardo Lima</strong></article>
+          <article class="depoimento"><span class="avatar" aria-hidden="true"></span><p>“Conseguimos reduzir retrabalho e melhorar nossa operação sem perder qualidade na experiência digital.”</p><strong>Fernanda Rocha</strong></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contato" id="contato">
+      <div class="limite">
+        <div class="chamada">Fale com a gente</div>
+        <h2>Contato</h2>
+        <div class="contato-conteudo">
+          <div class="arte-contato" aria-hidden="true"><span class="circulo"></span><span class="circulo"></span><span class="circulo"></span><span class="circulo"></span><span class="circulo"></span><span class="circulo"></span></div>
+          <form class="formulario" id="formulario-contato">
+            <h3>Conheça melhor nossas soluções</h3>
+            <p>Preencha o formulário para entrar em contato com nossa equipe.</p>
+            <div class="campo"><label for="nome">Nome</label><input id="nome" name="nome" required></div>
+            <div class="campo"><label for="email">E-mail</label><input id="email" name="email" type="email" required></div>
+            <div class="campo"><label for="empresa">Empresa</label><input id="empresa" name="empresa"></div>
+            <div class="campo"><label for="mensagem">Mensagem</label><textarea id="mensagem" name="mensagem" required></textarea></div>
+            <button class="botao" type="submit">ENVIAR</button>
+            <p class="retorno" id="retorno-formulario" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="limite">
+      <a class="marca-rodape" href="#inicio"><span class="simbolo" aria-hidden="true"></span>NovaCore</a>
+      <div class="colunas-rodape">
+        <div><h3>A EMPRESA</h3><a href="#sobre">Nossa história</a><a href="#servicos">Soluções</a><a href="#contato">Trabalhe conosco</a><a href="#contato">Política de privacidade</a></div>
+        <div><h3>CONTATO</h3><p>+55 11 4000-0000</p><p>contato@novacore.com</p></div>
+        <div><h3>ONDE ESTAMOS</h3><p>Av. Paulista, 1000</p><p>Bela Vista — São Paulo, SP</p><p>CEP 01310-100</p></div>
+      </div>
+      <div class="direitos">© 2026 NovaCore. Todos os direitos reservados.</div>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('formulario-contato').addEventListener('submit', function(evento) {
+      evento.preventDefault();
+      document.getElementById('retorno-formulario').textContent = 'Este formulário é apenas uma demonstração.';
+    });
+  </script>
+</body>
+</html>
